@@ -1,15 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-function Message(props) {
+function Message({className = '', alert = 'dark', ...props}) {
+  const css = {
+    className: `alert alert-${alert} m-3 ${className}`.trim(),
+    style : {
+      color: props.color
+    }
+  }
   return (
-    <div style={ {color: props.color} }>{props.children}</div>
+    <div {...css}>{props.children}</div>
   )
 }
 
 Message.propTypes = {
-    color: PropTypes.oneOf(['red', 'blue', 'green']),
-    children: PropTypes.string
+    color: PropTypes.oneOf(['black', 'red', 'blue', 'green']),
+    children: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element
+    ])
 }
 
 export default Message

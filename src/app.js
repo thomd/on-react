@@ -4,9 +4,13 @@ import Message from './message'
 
 const App = () => (
   <div className="container">
-    <Message color="red">Hello World</Message>
-    <Message color="blue">Goodby World</Message>
-    <Time locale="en-US"/>
+    <div className="row">
+      <Message className="col" alert="success" color="green">Hello World</Message>
+      <Message className="col" alert="danger" color="red">Goodby World</Message>
+    </div>
+    <div className="row">
+      <Message><Time locale="en-US"/></Message>
+    </div>
   </div>
 )
 
