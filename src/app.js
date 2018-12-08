@@ -1,6 +1,7 @@
 import React from 'react'
-import Time from './time'
 import Message from './message'
+import Time from './time'
+import Counter from './counter'
 
 const App = () => (
   <div className="container">
@@ -10,6 +11,9 @@ const App = () => (
     </div>
     <div className="row">
       <Message><Time locale="en-US"/></Message>
+    </div>
+    <div className="row">
+      <Message><Counter/></Message>
     </div>
   </div>
 )
