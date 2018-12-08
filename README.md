@@ -47,6 +47,10 @@ Start Development Server
 
     webpack-dev-server --mode development
 
+or
+
+    npm start
+
 ## Add ESLint
 
     npm i -D babel-eslint eslint eslint-loader eslint-plugin-react
