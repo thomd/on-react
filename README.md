@@ -4,9 +4,9 @@ Notes on React
 
 ## Basic Setup with Babel & Webpack 4
 
+    npm i react react-dom
     npm i -D @babel/core @babel/preset-env @babel/preset-react
     npm i -D babel-loader webpack webpack-cli webpack-dev-server
-    npm i react react-dom
 
 Create `webpack.config.js`:
 
@@ -20,14 +20,14 @@ Create `webpack.config.js`:
       module: {
         rules: [
           {
-            test: /\.(js|jsx)$/,
+            test: /\.js$/,
             exclude: /node_modules/,
             use: ['babel-loader']
           }
         ]
       },
       resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: ['*', '.js']
       },
       devServer: {
         contentBase: './dist'
@@ -51,7 +51,7 @@ or
 
     npm start
 
-## Add ESLint
+## ESLint
 
     npm i -D babel-eslint eslint eslint-loader eslint-plugin-react
 
@@ -61,7 +61,7 @@ Add `eslint-loader` to Webpack Config:
       module: {
         rules: [
           {
-            test: /\.(js|jsx)$/,
+            test: /\.js$/,
             exclude: /node_modules/,
 -            use: ['babel-loader']
 +            use: ['babel-loader', 'eslint-loader']
