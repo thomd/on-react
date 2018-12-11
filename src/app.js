@@ -2,6 +2,7 @@ import React from 'react'
 import Message from './message'
 import Time from './time'
 import Counter from './counter'
+import StopWatch from './stopwatch'
 
 const App = () => (
   <div className="container">
@@ -14,6 +15,7 @@ const App = () => (
     </div>
     <div className="row">
       <Message><Counter/></Message>
+      <Message><StopWatch/></Message>
     </div>
   </div>
 )
