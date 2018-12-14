@@ -14,8 +14,14 @@ const App = () => (
       <Message><Time locale="en-US"/></Message>
     </div>
     <div className="row">
-      <Message><Counter/></Message>
-      <Message><StopWatch/></Message>
+      <div className="col">
+        <Counter/>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col">
+        <StopWatch/>
+      </div>
     </div>
   </div>
 )
