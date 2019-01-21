@@ -193,3 +193,68 @@ Then wrap your component or app with it, e.g. like this:
 React doesn’t need error boundaries to recover from errors in **event handlers**. Unlike the render method and lifecycle methods, the event handlers don’t happen during rendering. So if they throw, React still knows what to display on the screen. 
 If you need to catch an error inside event handler, use the regular JavaScript `try / catch` statements.
 
+## Testing React with Jest
+
+First install **jest** test runner
+
+    npm i -D jest
+    npm i -D react-testing-library jest-dom
+    npm i -D babel-jest babel-core@bridge
+
+then add a jest configuration `jest.config.js` for **testing globals**:
+
+    module.exports = {
+      setupTestFrameworkScriptFile: '<rootDir>/testSetup.js'
+    }
+
+and create this referenced setup script `testSetup.js`:
+
+    import 'jest-dom/extend-expect'
+    import 'react-testing-library/cleanup-after-each'
+
+and then create a **test file** matching this filename pattern `**/__tests__/**/*.js?(x),**/?(*.)+(spec|test).js?(x)`, e.g. `./src/App.test.js`
+
+    import React from 'react'
+    import { render } from 'react-testing-library'
+    import App from './App'
+
+    describe('App', () => {
+      it('should render', () => {
+        render(<App/>)
+      })
+    })
+
+and run test with 
+
+    nps test jest
+    mpn t
+
+### Tests with Dynamic Imports
+
+For **dynamic imports**, we need **babel-plugin-dynamic-import-node**:
+
+    npm i -D babel-plugin-dynamic-import-node
+
+and a environment specific plugin setting in `.babelrc`:
+
+```diff
+    {
+      presets: [
+        "@babel/preset-env",
+        "@babel/preset-react"
+      ],
+      plugins: [
+        '@babel/plugin-proposal-class-properties',
+        '@babel/plugin-syntax-dynamic-import'
+      ],
++     env: {
++       test: {
++         plugins: [
++           'dynamic-import-node'
++         ]
++       }
++     }
+    }
+```
+
+
