@@ -61,7 +61,7 @@ or
 
 ## ESLint
 
-    npm i -D babel-eslint eslint eslint-loader eslint-plugin-react
+    npm i -D babel-eslint eslint eslint-loader eslint-plugin-react eslint-plugin-jsx-a11y
 
 Add `eslint-loader` to Webpack Config:
 
