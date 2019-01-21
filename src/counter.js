@@ -4,17 +4,26 @@ class Counter extends Component {
   constructor(props) {
     super(props)
     this.state = { count: 0 }
+    this.increment = this.increment.bind(this)
+    this.count = this.count.bind(this)
   }
 
-  increment(event) {
-    if(event.type === 'click' || event.type === 'keydown' && event.key === '+') {
+  increment() {
+    this.setState({ count: this.state.count + 1 })
+  }
+
+  count(event) {
+    if(event.key === '+') {
       this.setState({ count: this.state.count + 1 })
+    }
+    if(event.key === '-') {
+      this.setState({ count: this.state.count - 1 })
     }
   }
 
   render() {
     return (
-      <button className='btn btn-info' onClick={this.increment.bind(this)} onKeyDown={this.increment.bind(this)}>{this.state.count}</button>
+      <button className='btn btn-info' onClick={this.increment} onKeyDown={this.count}>{this.state.count}</button>
     )
   }
 }

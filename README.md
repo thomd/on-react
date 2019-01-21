@@ -51,6 +51,22 @@ Create `.babelrc`:
       ]
     }
 
+In order to support ES6/7/8 features, add further babel plugins, like e.g.
+
+    npm i -D @babel/plugin-proposal-class-properties
+
+```diff
+    {
+      "presets": [
+        "@babel/preset-env",
+        "@babel/preset-react"
+      ],
++     plugins: [
++       '@babel/plugin-proposal-class-properties'
++     ]
+    }
+```
+
 Start Development Server
 
     webpack-dev-server --mode development
@@ -94,4 +110,44 @@ and add a ESLint configuration `.eslintrc`:
       }
     }
 
+## Error Boundaries
+
+A JavaScript error in a part of the UI shouldn’t break the whole app. `try / catch` only works for **imperative** code, however React components are **declarative** and specify **what** should be rendered.
+
+**Error boundaries** preserve the declarative nature of React.
+
+First create a Error boundary component `./src/`
+
+    import React from 'react'
+    export default class DefaultErrorBoundary extends React.Component {
+      state = { hasError: false }
+      static getDerivedStateFromError() {
+        return { hasError: true }
+      }
+      render() {
+        const { hasError } = this.state
+        const { children } = this.props
+        return hasError ? <div>Something went wrong</div> : children
+      }
+    }
+
+Then wrap your component or app with it, e.g. like this:
+
+```diff
+    import React from 'react'
+    import ReactDOM from 'react-dom'
++   import DefaultErrorBoundary from './DefaultErrorBoundary'
+    import App from './App'
+
+    ReactDOM.render(
+      <React.StrictMode>
++       <DefaultErrorBoundary>
+          <App />
++       </DefaultErrorBoundary>
+      </React.StrictMode>,
+      document.getElementById('app'))
+```
+
+React doesn’t need error boundaries to recover from errors in **event handlers**. Unlike the render method and lifecycle methods, the event handlers don’t happen during rendering. So if they throw, React still knows what to display on the screen. 
+If you need to catch an error inside event handler, use the regular JavaScript `try / catch` statements.
 
