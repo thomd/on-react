@@ -77,7 +77,7 @@ or
 
 ## ESLint
 
-    npm i -D babel-eslint eslint eslint-loader eslint-plugin-react eslint-plugin-jsx-a11y
+    npm i -D babel-eslint eslint eslint-loader eslint-plugin-react
 
 Add `eslint-loader` to Webpack Config:
 
@@ -98,17 +98,59 @@ and add a ESLint configuration `.eslintrc`:
 
     {
       parser: "babel-eslint",
-      plugins: ["react", "jsx-a11y"],
+      plugins: ["react"],
       rules: {
         "react/prop-types": ["warn"]
       },
-      extends: ["eslint:recommended", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+      extends: ["eslint:recommended", "plugin:react/recommended"],
       env: {
         browser: true,
         node: true,
         es6: true
       }
     }
+
+## Accessibility (a11y) in React
+
+Lint and audit for Accessibility issues using **ESLint** and **React-axe**.
+
+First install
+
+    npm i -D eslint-plugin-jsx-a11y react-axe
+
+then extend `.exlintrc` configuration
+
+```diff
+    {
+      parser: "babel-eslint",
+-     plugins: ["react"],
++     plugins: ["react", "jsx-a11y"],
+      rules: {
+        "react/prop-types": ["warn"]
+      },
+-     extends: ["eslint:recommended", "plugin:react/recommended"],
++     extends: ["eslint:recommended", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+      env: {
+        browser: true,
+        node: true,
+        es6: true
+      }
+    }
+```
+
+and add in your **entry file** a call to `axe()` for **development only**. Audit runs in the browser and results will show in the Chrome DevTools console.
+
+```diff
+    import React from 'react'
+    import ReactDOM from 'react-dom'
+    import App from './App'
+
++   if (process.env.NODE_ENV === 'development') {
++     const axe = require('react-axe')
++     axe(React, ReactDOM, 1000)
++   }
+    ReactDOM.render(<App />, document.getElementById('app'))
+```
 
 ## Error Boundaries
 
