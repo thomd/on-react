@@ -14,11 +14,13 @@ function Message({className = '', alert = 'dark', ...props}) {
 }
 
 Message.propTypes = {
-    color: PropTypes.oneOf(['black', 'red', 'blue', 'green']),
-    children: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element
-    ])
+  alert: PropTypes.oneOf(['primary', 'decondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']),
+  className: PropTypes.string,
+  color: PropTypes.oneOf(['black', 'red', 'blue', 'green']),
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element
+  ])
 }
 
 export default Message

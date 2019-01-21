@@ -19,6 +19,6 @@ module.exports = {
     extensions: ['*', '.js', '.jsx']
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: '.',
   }
 };

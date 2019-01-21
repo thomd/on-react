@@ -26,22 +26,22 @@ class StopWatch extends React.Component {
   render() {
     const { lapse, running } = this.state
     return (
-      <div className="my-3 p-3 d-inline">
+      <div>
         <Button onClick={() => this.run()}>{running ? 'Stop' : 'Start'}</Button>
         <Button onClick={() => this.clear()} active={running}>clear</Button>
-        <Label>{lapse}</Label>
+        <LapseTime>{lapse}</LapseTime>
       </div>
     )
   }
 }
 
-function Label(props) {
+function LapseTime(props) {
   return (
-    <label>{props.children} ms</label>
+    <time>{props.children} ms</time>
   )
 }
 
-Label.propTypes = {
+LapseTime.propTypes = {
   children: PropTypes.number,
 }
 

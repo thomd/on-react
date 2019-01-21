@@ -13,12 +13,12 @@ const App = () => (
     <div className="row">
       <Message><Time locale="en-US"/></Message>
     </div>
-    <div className="row">
+    <div className="row mb-3">
       <div className="col">
         <Counter/>
       </div>
     </div>
-    <div className="row">
+    <div className="row mb-3">
       <div className="col">
         <StopWatch/>
       </div>

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Radium from 'radium'
 
 class Counter extends Component {
   constructor(props) {
@@ -7,25 +6,17 @@ class Counter extends Component {
     this.state = { count: 0 }
   }
 
-  increment() {
-    this.setState({ count: this.state.count + 1 })
+  increment(event) {
+    if(event.type === 'click' || event.type === 'keydown' && event.key === '+') {
+      this.setState({ count: this.state.count + 1 })
+    }
   }
 
   render() {
     return (
-      <div className='my-3 p-3' style={styles.base} onClick={this.increment.bind(this)}>{this.state.count}</div>
+      <button className='btn btn-info' onClick={this.increment.bind(this)} onKeyDown={this.increment.bind(this)}>{this.state.count}</button>
     )
   }
 }
 
-const styles = {
-  base: {
-    cursor: 'pointer',
-    ':hover': {
-      background: '#eee'
-    }
-  }
-}
-
-export default Radium(Counter)
-
+export default Counter

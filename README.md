@@ -34,6 +34,14 @@ Create `webpack.config.js`:
       }
     };
 
+Create an entry file `src/index.js`:
+
+    import React from 'react'
+    import ReactDOM from 'react-dom'
+    import App from './app'
+
+    ReactDOM.render(<React.StrictMode><App /></React.StrictMode>, document.getElementById('app'))
+
 Create `.babelrc`:
 
     {
@@ -69,3 +77,21 @@ Add `eslint-loader` to Webpack Config:
         ]
       },
 ```
+
+and add a ESLint configuration `.eslintrc`:
+
+    {
+      parser: "babel-eslint",
+      plugins: ["react", "jsx-a11y"],
+      rules: {
+        "react/prop-types": ["warn"]
+      },
+      extends: ["eslint:recommended", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+      env: {
+        browser: true,
+        node: true,
+        es6: true
+      }
+    }
+
+
