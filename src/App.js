@@ -1,8 +1,8 @@
 import React from 'react'
-import Message from './message'
-import Time from './time'
-import Counter from './counter'
-import StopWatch from './stopwatch'
+import Message from './Message'
+import Time from './Time'
+import Counter from './Counter'
+import StopWatch from './Stopwatch'
 
 const App = () => (
   <div className="container">
