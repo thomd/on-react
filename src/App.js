@@ -3,6 +3,8 @@ import Message from './Message'
 import Time from './Time'
 import Counter from './Counter'
 import StopWatch from './Stopwatch'
+import Amount from './Amount'
+import { Euro, Pound } from './Currency'
 
 const App = () => (
   <div className="container">
@@ -21,6 +23,19 @@ const App = () => (
     <div className="row mb-3">
       <div className="col">
         <StopWatch/>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col">
+        <h3>Example for Render Props: Currency Converter</h3>
+        <Amount>
+          {amount => (
+            <div>
+              <Euro amount={amount} />
+              <Pound amount={amount} />
+            </div>
+          )}
+        </Amount>
       </div>
     </div>
   </div>

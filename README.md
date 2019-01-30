@@ -1,8 +1,8 @@
 # On React
 
-Notes on React
+Some unstructured notes on React
 
-## Basic Setup with Babel & Webpack 4
+# Basic Setup with Babel & Webpack 4
 
     npm i react react-dom
     npm i -D @babel/core @babel/preset-env @babel/preset-react
@@ -152,7 +152,7 @@ and add in your **entry file** a call to `axe()` for **development only**. Audit
     ReactDOM.render(<App />, document.getElementById('app'))
 ```
 
-## Error Boundaries
+# Error Boundaries
 
 A JavaScript error in a part of the UI shouldn’t break the whole app. `try / catch` only works for **imperative** code, however React components are **declarative** and specify **what** should be rendered.
 
@@ -193,7 +193,7 @@ Then wrap your component or app with it, e.g. like this:
 React doesn’t need error boundaries to recover from errors in **event handlers**. Unlike the render method and lifecycle methods, the event handlers don’t happen during rendering. So if they throw, React still knows what to display on the screen. 
 If you need to catch an error inside event handler, use the regular JavaScript `try / catch` statements.
 
-## Testing React with Jest
+# Testing React with Jest
 
 First install **jest** test runner
 
@@ -229,7 +229,7 @@ and run test with
     nps test jest
     mpn t
 
-### Tests with Dynamic Imports
+## Tests with Dynamic Imports
 
 For **dynamic imports**, we need **babel-plugin-dynamic-import-node**:
 
@@ -257,4 +257,9 @@ and a environment specific plugin setting in `.babelrc`:
     }
 ```
 
+# Main Concepts
+
+TODO
+
+# Render Prop Pattern
 
