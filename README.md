@@ -152,6 +152,33 @@ and add in your **entry file** a call to `axe()` for **development only**. Audit
     ReactDOM.render(<App />, document.getElementById('app'))
 ```
 
+# React Concepts
+
+## Components
+
+## JSX
+
+## State
+
+**Always** use `setState` function to change state and **never** mutate it directly.
+
+Execution of `setState` is **asynchronous**, so do not rely on it to update the state immediately.
+
+`setState` can either take a **new state object** or **a function**. As second argument, it can also have an optional callback which is executed when the state is updated.
+
+    state = { a: 1 }
+    this.setState(state => ({a: state.a + 1}))
+
+If your new `state` doesn't depend on the old `state`, then you can use the `this.setState(object)` construct.
+
+If your new `state` depends on the old `state` then use `this.setState(function(currentState){ ... })` construct.
+
+## Props
+
+The difference between `state` and `props` is, that `state` is **owned by the component** itself while `props` is something that is passed down to the component by it's **parent**.
+
+And the similarity (sort of) is that React **automatically re-renders** your component when either the component's `state` changes or when the component's `props` changes.
+
 # Error Boundaries
 
 A JavaScript error in a part of the UI shouldn’t break the whole app. `try / catch` only works for **imperative** code, however React components are **declarative** and specify **what** should be rendered.
