@@ -333,7 +333,7 @@ const Paragraph = ({value}) => <p>{value}</p>
 
 This is analogue to a closure:
 
-``JavaScript
+```javascript
 const withState = fn => {
   const state = 'foobar'
   fn(state)
