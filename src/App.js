@@ -1,10 +1,10 @@
 import React from 'react'
-import Message from './Message'
-import Time from './Time'
-import Counter from './Counter'
-import StopWatch from './Stopwatch'
-import Amount from './Amount'
-import { Euro, Pound } from './Currency'
+import Message from './components/Message'
+import Time from './components/Time'
+import Counter from './components/Counter'
+import StopWatch from './components/Stopwatch'
+import Amount from './components/Amount'
+import { Euro, Pound } from './components/Currency'
 
 const App = () => (
   <div className="container">

@@ -156,7 +156,11 @@ and add in your **entry file** a call to `axe()` for **development only**. Audit
 
 ## Components
 
+TODO
+
 ## JSX
+
+TODO
 
 ## State
 
@@ -288,5 +292,59 @@ and a environment specific plugin setting in `.babelrc`:
 
 TODO
 
-# Render Prop Pattern
+# Render Props
+
+The term **render prop** refers to a pattern for sharing code between React components using a **prop** whose value is a **function**.
+
+### Example
+
+Having a stateful component `WithState.jsx` which expects a function rendering this state
+
+```jsx
+const WithState = props => {
+  const name = 'foobar'
+  return (
+    <div>
+      {props.children(name)}
+    </div>
+  )
+}
+```
+
+you can then use this component and implement non-dependent components which use this state like this
+
+```jsx
+const App = () => {
+  return (
+    <div>
+      <WithState>
+        {value => <Headline value={value}/>}
+      </WithState>
+      <WithState>
+        {value => <Paragraph value={value}/>}
+      </WithState>
+    </div>
+  )
+}
+
+const Headline = ({value}) => <h1>{value}</h1>
+const Paragraph = ({value}) => <p>{value}</p>
+```
+
+This is analogue to a closure:
+
+``JavaScript
+const withState = fn => {
+  const state = 'foobar'
+  fn(state)
+}
+
+const app = () => {
+  withState(value => {
+    // do something with value
+  })
+}
+
+```
+
 
