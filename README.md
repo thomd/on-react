@@ -351,15 +351,15 @@ const app = () => {
 
 ## React Router
 
-*React Router* provides browser features like
+**React Router** provides browser features like
 
-1. browser should *change the URL* when you navigate to a different screen.
+1. browser should **change the URL** when you navigate to a different screen.
 
-2. *Deep linking* should work.
+2. **Deep linking** should work.
 
-3. The *browser back (and forward) button* should work like expected.
+3. The **browser back (and forward) button** should work like expected.
 
-*React Router* provides two different kind of routes using the *History API*:
+**React Router** provides two different kind of routes using the **History API**:
 
 1. `BrowserRouter` which builds classic URLs like `https://application.com/dashboard`
 
@@ -451,7 +451,7 @@ Anywhere that you want to only render content based on the location’s pathname
 
 Without the `exact` attribute, `path='/'` would also match `/about`, since `/` is contained in the route.
 
-Routes have three props that can be used to define what should be rendered when the route’s path matches. *Only one* should be provided to a `<Route>` element.
+Routes have three props that can be used to define what should be rendered when the route’s path matches. **Only one** should be provided to a `<Route>` element.
 
 1. `component`: a React component.
 
@@ -460,14 +460,14 @@ Routes have three props that can be used to define what should be rendered when 
 3. `children`: a function that returns a React element. Unlike the prior two props, this will always be rendered, regardless of whether the route’s path matches the current location.
 
 ```jsx
-    <Route path='/page' component={Page} />
+<Route path='/page' component={Page} />
 
-    <Route path='/page' render={ props => (
-      <Page {...props} data={extraProps}/>
-    )}/>
+<Route path='/page' render={ props => (
+  <Page {...props} data={extraProps}/>
+)}/>
 
-    <Route path='/page' children={ props => (
-      props.match ? <Page {...props}/> : <EmptyPage {...props}/>
-    )}/>
+<Route path='/page' children={ props => (
+  props.match ? <Page {...props}/> : <EmptyPage {...props}/>
+)}/>
 ```
 
