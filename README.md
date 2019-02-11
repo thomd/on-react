@@ -1,6 +1,6 @@
 # On React
 
-Some unstructured notes on React
+Some **unstructured notes** and **example code** on React
 
 # Basic Setup with Babel & Webpack 4
 
