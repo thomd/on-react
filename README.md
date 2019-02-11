@@ -347,4 +347,127 @@ const app = () => {
 
 ```
 
+# React Ecosystem
+
+## React Router
+
+*React Router* provides browser features like
+
+1. browser should *change the URL* when you navigate to a different screen.
+
+2. *Deep linking* should work.
+
+3. The *browser back (and forward) button* should work like expected.
+
+*React Router* provides two different kind of routes using the *History API*:
+
+1. `BrowserRouter` which builds classic URLs like `https://application.com/dashboard`
+
+2. `HashRouter` which builds URLs like `https://application.com/#/dashboard`
+
+### Install
+
+    npm install react-router-dom
+
+### Components
+
+1. `BrowserRouter`, usually aliased as `Router` wraps all your Route components
+
+2. `Link` generate links to your routes
+
+3. `Route` show - or hide - the components they contain
+
+### BrowserRouter
+
+A `<BrowserRouter>` component can only have one child element, hence wrapps the complete application.
+
+```diff
+    import React from 'react'
++   import { BrowserRouter as Router } from 'react-router-dom'
+
+    export default () => {
+      return (
++       <Router>
+          <div>
+            // Application
+          </div>
++       </Router>
+      )
+    }
+```
+
+### Link
+
+The `<Link>` component is used to trigger new routes.
+
+```diff
+    import React from 'react'
+-   import { BrowserRouter as Router } from 'react-router-dom'
++   import { BrowserRouter as Router, Link } from 'react-router-dom'
+
+    export default () => {
+      return (
+        <Router>
+          <div>
+            // Application
++           <nav>
++             <Link to={'/home'}>Home</Link>
++             <Link to={'/about'}>About</Link>
++           </nav>
+          </div>
+        </Router>
+      )
+    }
+```
+
+### Route
+
+Anywhere that you want to only render content based on the location’s pathname, you should use a `<Route>` element.
+
+```diff
+    import React from 'react'
+-   import { BrowserRouter as Router, Link } from 'react-router-dom'
++   import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
++   import { Home, About } from './Pages'
+
+    export default () => {
+      return (
+        <Router>
+          <div>
+-           // Application
++           <main>
++             <Route exact path='/' component={Home} />
++             <Route path='/about' component={About} />
++           </main>
+            <nav>
+              <Link to={'/home'}>Home</Link>
+              <Link to={'/about'}>About</Link>
+            </nav>
+          </div>
+        </Router>
+      )
+    }
+```
+
+Without the `exact` attribute, `path='/'` would also match `/about`, since `/` is contained in the route.
+
+Routes have three props that can be used to define what should be rendered when the route’s path matches. *Only one* should be provided to a `<Route>` element.
+
+1. `component`: a React component.
+
+2. `render`: a function that returns a React element.
+
+3. `children`: a function that returns a React element. Unlike the prior two props, this will always be rendered, regardless of whether the route’s path matches the current location.
+
+```jsx
+    <Route path='/page' component={Page} />
+
+    <Route path='/page' render={ props => (
+      <Page {...props} data={extraProps}/>
+    )}/>
+
+    <Route path='/page' children={ props => (
+      props.match ? <Page {...props}/> : <EmptyPage {...props}/>
+    )}/>
+```
 
