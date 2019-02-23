@@ -164,7 +164,7 @@ Always prefer **composition over inheritance**.for components.
     const Dialog = (props) => {
       return (
         <div>
-          <div style={{ backgrounf: "#eee" }} {...props} />
+          <div style={{background:"#eee"}} {...props} />
         </div>
       )
     }
@@ -182,11 +182,11 @@ Always prefer **composition over inheritance**.for components.
 
 ```diff
 -   const Dialog = (props) => {
-+   const Dialog = ({ title, ...props }) => {
++   const Dialog = ({title, ...props}) => {
       return (
         <div>
-+         {title ? <h1>{title}</h1> : null}
-          <div style={{ backgrounf: "#eee" }} {...props} />
++         {title ? <h3>{title}</h3> : null}
+          <div style={{background:"#eee"}} {...props} />
         </div>
       )
     }
