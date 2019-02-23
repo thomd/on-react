@@ -292,6 +292,53 @@ and a environment specific plugin setting in `.babelrc`:
 
 TODO
 
+# Refs
+
+Refs provide a way to **access DOM nodes or React elements** created in the render method.
+
+Refs are attached to React elements via the `ref` attribute.
+
+Refs are either created by using `React.createRef()` and referenced with the `current` attribute of the ref or by simply using a callback pattern `el => this.myRef = el` and a referrenc of `myRef`.
+
+The value of the ref depends on the type of node:
+
+1. When the ref attribute is used on an **HTML element**, the ref receives the underlying **DOM element** as its current property.
+
+2. When the ref attribute is used on a **custom class component**, the ref object receives the **mounted instance of the component** as its current.
+
+### Example using createRef
+
+```jsx
+class TextInput extends Component {
+  textInput = React.createRef()
+  componentDidMount() {
+    this.textInput.current.focus()
+  }
+  render() {
+    return (
+      <input type="text" ref={this.textInput} />
+    )
+  }
+}
+
+```
+
+### Example using the callback pattern
+
+```jsx
+class TextInput extends Component {
+  componentDidMount() {
+    this.textInput.focus()
+  }
+  render() {
+    return (
+      <input type="text" ref={el => this.textInput = el} />
+    )
+  }
+}
+```
+
+
 # Render Props
 
 The term **render prop** refers to a pattern for sharing code between React components using a **prop** whose value is a **function**.
