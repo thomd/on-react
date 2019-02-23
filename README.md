@@ -306,23 +306,6 @@ The value of the ref depends on the type of node:
 
 2. When the ref attribute is used on a **custom class component**, the ref object receives the **mounted instance of the component** as its current.
 
-### Example using createRef
-
-```jsx
-class TextInput extends Component {
-  textInput = React.createRef()
-  componentDidMount() {
-    this.textInput.current.focus()
-  }
-  render() {
-    return (
-      <input type="text" ref={this.textInput} />
-    )
-  }
-}
-
-```
-
 ### Example using the callback pattern
 
 ```jsx
@@ -338,6 +321,23 @@ class TextInput extends Component {
 }
 ```
 
+### Example using createRef
+
+```diff
+    class TextInput extends Component {
++     textInput = React.createRef()
+      componentDidMount() {
+-       this.textInput.focus()
++       this.textInput.current.focus()
+      }
+      render() {
+        return (
+-         <input type="text" ref={el => this.textInput = el} />
++         <input type="text" ref={this.textInput} />
+        )
+      }
+    }
+```
 
 # Render Props
 
