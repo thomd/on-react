@@ -156,7 +156,54 @@ and add in your **entry file** a call to `axe()` for **development only**. Audit
 
 ## Components
 
-TODO
+Always prefer **composition over inheritance**.for components.
+
+**Container components** don’t know their children ahead of time, for example generic boxes like dialogs:
+
+```
+    const Dialog = (props) => {
+      return (
+        <div>
+          <div style={{ backgrounf: "#eee" }} {...props} />
+        </div>
+      )
+    }
+
+    function App() {
+      return (
+        <div>
+          <Dialog>Hello Dialog</Dialog>
+        </div>
+      )
+    }
+```
+
+**Specialization** is achieved by composition, where a more *specific* component renders a more *generic* one and configures it with `props`:
+
+```diff
+-   const Dialog = (props) => {
++   const Dialog = ({ title, ...props }) => {
+      return (
+        <div>
++         {title ? <h1>{title}</h1> : null}
+          <div style={{ backgrounf: "#eee" }} {...props} />
+        </div>
+      )
+    }
+
++   const WelcomeDialog = props => {
++     return <Dialog title="Welcome" {...props} />
++   }
+
+    function App() {
+      return (
+        <div>
+-         <Dialog>Hello Dialog</Dialog>
++         <WelcomeDialog>Hello Welcome Dialog</WelcomeDialog>
+        </div>
+      )
+    }
+```
 
 ## JSX
 
