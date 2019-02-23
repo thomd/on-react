@@ -302,9 +302,9 @@ Refs are either created by using `React.createRef()` and referenced with the `cu
 
 The value of the ref depends on the type of node:
 
-1. When the ref attribute is used on an **HTML element**, the ref receives the underlying **DOM element** as its current property.
+1. When the ref attribute is used on an **HTML element**, the ref receives the underlying **DOM element** as its current property. You can use the `ref` attribute inside a function component as long as you refer a DOM element.
 
-2. When the ref attribute is used on a **custom class component**, the ref object receives the **mounted instance of the component** as its current.
+2. When the ref attribute is used on a **custom class component**, the ref object receives the **mounted instance of the component** as its current. You can not use the `ref` attribute on function components.
 
 ### Example using the callback pattern
 
