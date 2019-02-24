@@ -264,9 +264,12 @@ State updates are **merged**. If your state contains several independent variabl
 
 Stateful class components inherit from `React.Component` the following methods:
 
-1. The `componentDidMount()` method runs after the component output has been rendered to the DOM.
+1. The `componentWillMount()` method is only called one time, which is before the initial render. This method
+   **is deprecated** since React 16.3.
 
-2. The `componentWillUnmount()` method runs before the component output has been removed from the DOM.
+2. The `componentDidMount()` method runs after the component output has been rendered to the DOM.
+
+3. The `componentWillUnmount()` method runs before the component output has been removed from the DOM.
 
 
 
