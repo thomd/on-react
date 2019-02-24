@@ -164,8 +164,6 @@ Elements are **immutable**, are **plain objects**, and are **cheap to create**.
 
 Conceptually, components are **pure functions**. They accept read-only **props** and return **elements** describing what should appear on the screen.
 
-
-
 Always prefer **composition over inheritance** for components.
 
 **Container components** don’t know their children ahead of time, for example generic boxes like dialogs:
@@ -215,6 +213,12 @@ Always prefer **composition over inheritance** for components.
     }
 ```
 
+## Props
+
+The difference between `state` and `props` is, that `state` is **owned by the component** itself while `props` is something that is passed down to the component by it's **parent**.
+
+And the similarity (sort of) is that React **automatically re-renders** your component when either the component's `state` changes or when the component's `props` changes.
+
 ## JSX
 
 Babel compiles JSX down to `React.createElement()` calls:
@@ -233,24 +237,38 @@ const element = React.createElement('h1', {className: 'greeting'}, 'Hello World'
 
 ## State
 
-**Always** use `setState` function to change state and **never** mutate it directly.
+**Always** use `setState` function to change state and **never** mutate it directly (except in the constructor).
 
-Execution of `setState` is **asynchronous**, so do not rely on it to update the state immediately.
+As updates of `setState` may be asynchronous, do not rely on it to update the state immediately.
 
-`setState` can either take a **new state object** or **a function**. As second argument, it can also have an optional callback which is executed when the state is updated.
+If your new state does **not depend** on the old state, then you can use `this.setState(object)` like for
+example:
 
-    state = { a: 1 }
-    this.setState(state => ({a: state.a + 1}))
+```javascript
+    this.setState({
+      active: true
+    })
+```
 
-If your new `state` doesn't depend on the old `state`, then you can use the `this.setState(object)` construct.
+If your new state **depends** on the old state then use a callback `this.setState( (state, props) => {...})` like for example:
 
-If your new `state` depends on the old `state` then use `this.setState(function(currentState){ ... })` construct.
+```javascript
+    this.setState(state => ({
+      counter: state.counter + 1
+    }))
+```
 
-## Props
+State updates are **merged**. If your state contains several independent variables, then you can update them independently with separate `setState()` calls.
 
-The difference between `state` and `props` is, that `state` is **owned by the component** itself while `props` is something that is passed down to the component by it's **parent**.
+## Lifecycle Methods
 
-And the similarity (sort of) is that React **automatically re-renders** your component when either the component's `state` changes or when the component's `props` changes.
+Stateful class components inherit from `React.Component` the following methods:
+
+1. The `componentDidMount()` method runs after the component output has been rendered to the DOM.
+
+2. The `componentWillUnmount()` method runs before the component output has been removed from the DOM.
+
+
 
 # Error Boundaries
 
