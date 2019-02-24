@@ -154,9 +154,19 @@ and add in your **entry file** a call to `axe()` for **development only**. Audit
 
 # React Concepts
 
+## Elements
+
+React Elements are the **smallest building blocks** of React apps. Elements are used to build **components** and are rendered into the DOM using `ReactDOM.render()`.
+
+Elements are **immutable**, are **plain objects**, and are **cheap to create**.
+
 ## Components
 
-Always prefer **composition over inheritance**.for components.
+Conceptually, components are **pure functions**. They accept read-only **props** and return **elements** describing what should appear on the screen.
+
+
+
+Always prefer **composition over inheritance** for components.
 
 **Container components** don’t know their children ahead of time, for example generic boxes like dialogs:
 
