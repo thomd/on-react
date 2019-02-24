@@ -207,7 +207,19 @@ Always prefer **composition over inheritance**.for components.
 
 ## JSX
 
-TODO
+Babel compiles JSX down to `React.createElement()` calls:
+
+```jsx
+const element = (
+  <h1 className="greeting">Hello World</h1>
+)
+```
+
+is identical to:
+
+```javascript
+const element = React.createElement('h1', {className: 'greeting'}, 'Hello World')
+```
 
 ## State
 
