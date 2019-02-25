@@ -260,6 +260,12 @@ If your new state **depends** on the old state then use a callback `this.setStat
 
 State updates are **merged**. If your state contains several independent variables, then you can update them independently with separate `setState()` calls.
 
+### Form State
+
+In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with `setState()`.
+
+Best practice is to make the React state be the **single source of truth**.
+
 ## Lifecycle Methods
 
 Stateful class components inherit from `React.Component` the following methods:
@@ -270,8 +276,6 @@ Stateful class components inherit from `React.Component` the following methods:
 2. The `componentDidMount()` method runs after the component output has been rendered to the DOM.
 
 3. The `componentWillUnmount()` method runs before the component output has been removed from the DOM.
-
-
 
 # Error Boundaries
 
