@@ -5,6 +5,7 @@ import Counter from './components/Counter'
 import StopWatch from './components/Stopwatch'
 import Amount from './components/Amount'
 import { Euro, Pound } from './components/Currency'
+import TemperatureCalculator from './components/TemperatureCalculator'
 
 const App = () => (
   <div className="container">
@@ -36,6 +37,12 @@ const App = () => (
             </div>
           )}
         </Amount>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col">
+        <h3>Example for Lifting-State-Up: Temperature Calculator</h3>
+        <TemperatureCalculator />
       </div>
     </div>
   </div>

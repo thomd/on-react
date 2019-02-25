@@ -266,6 +266,12 @@ In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically
 
 Best practice is to make the React state be the **single source of truth**.
 
+### Lifting State Up
+
+If several components need to reflect the same changing data, it is recommended to **lift the shared state up** to their **closest common ancestor**.
+
+For example a parent component can provide a **setState-callback-function** as a prop to a child component which sets state of the parent.
+
 ## Lifecycle Methods
 
 Stateful class components inherit from `React.Component` the following methods:
